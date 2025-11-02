@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huadian Chenguang (HDCG) - B2B Product Center</title>
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 阿里图标库 (用于 3D 视图等) -->
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_3959139_uf90m88dky.css">
+    
+    <style>
+        /* 自定义阿里图标库 iconfont */
+        .icon {
+           width: 1em; height: 1em;
+           vertical-align: -0.15em;
+           fill: currentColor;
+           overflow: hidden;
+        }
+
+        /* 页面切换的显示/隐藏 */
+        .page-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        .page-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* 产品图库：活动缩略图样式 */
+        .gallery-thumb.active {
+            border-color: #2563EB; /* blue-600 */
+        }
+
+        /* 新增: 下载页面的Tab样式 */
+        .download-tab-content {
+            display: none;
+        }
+        .download-tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+
+    <!-- 1. 头部导航栏 -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="font-bold text-xl text-blue-700 nav-link" data-page="products">
+                        HDCG
+                    </a>
+                </div>
+
+                <!-- 桌面导航 -->
+                <div class="hidden md:flex md:items-center md:space-x-6">
+                    
+                    <!-- 产品下拉菜单 -->
+                    <div class="relative group">
+                        <button class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium flex items-center">
+                            <span>Products & Services</span>
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <!-- 下拉菜单内容 -->
+                        <div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                            <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 nav-link product-category-link" data-page="product-list" data-category="Cabinet Systems" role="menuitem">Cabinet Systems</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 nav-link product-category-link" data-page="product-list" data-category="Datacenter Infrastructure" role="menuitem">Datacenter Infrastructure</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 nav-link product-category-link" data-page="product-list" data-category="Cold Aisle Containment" role="menuitem">Cold Aisle Containment</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 nav-link product-category-link" data-page="product-list" data-category="HD200 Micro Module" role="menuitem">HD200 Micro Module</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 nav-link product-category-link" data-page="product-list" data-category="Optical Communication" role="menuitem">Optical Communication</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 nav-link product-category-link" data-page="product-list" data-category="Audio & Video" role="menuitem">Audio & Video</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 nav-link product-category-link" data-page="product-list" data-category="AC/DC Power Distribution" role="menuitem">AC/DC Power Distribution</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 nav-link product-category-link" data-page="product-list" data-category="Audio Patch Panels (VDF)" role="menuitem">Audio Patch Panels (VDF)</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 nav-link product-category-link" data-page="product-list" data-category="Digital Patch Panels (DDF)" role="menuitem">Digital Patch Panels (DDF)</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 nav-link product-category-link" data-page="product-list" data-category="Network Patch Panels (NDF)" role="menuitem">Network Patch Panels (NDF)</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 nav-link product-category-link" data-page="product-list" data-category="Fiber Patch Panels (ODF)" role="menuitem">Fiber Patch Panels (ODF)</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 nav-link product-category-link" data-page="product-list" data-category="Structured Cabling" role="menuitem">Structured Cabling</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium nav-link" data-page="about">About Us</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium nav-link" data-page="download">Download</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium nav-link" data-page="contact">Contact Us</a>
+                </div>
+                
+                <!-- 询价按钮 (桌面) -->
+                <div class="hidden md:flex items-center">
+                    <a href="#" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 nav-link" data-page="contact">
+                        Get a Quote
+                    </a>
+                </div>
+
+                <!-- 移动端菜单按钮 -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" aria-expanded="false">
+                        <span class="sr-only">打开主菜单</span>
+                        <!-- 打开时的图标 (Hamburger) -->
+                        <svg id="menu-open-icon" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                        <!-- 关闭时的图标 (X) -->
+                        <svg id="menu-close-icon" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 移动端菜单 -->
+            <div id="mobile-menu" class="md:hidden hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium nav-link" data-page="products" data-category="Cabinet Systems">Products</a>
+                    <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium nav-link" data-page="about">About Us</a>
+                    <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium nav-link" data-page="download">Download</a>
+                    <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium nav-link" data-page="contact">Contact Us</a>
+                    <a href="#" class="w-full mt-2 inline-flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 nav-link" data-page="contact">
+                        Get a Quote
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 2. 主内容区域 -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+
+        <!-- 
+          页面A: 所有产品系列总览 (新的默认首页) 
+        -->
+        <div id="products" class="page-content active">
+            <h1 class="text-3xl font-bold text-gray-900 mb-8">Our Product Lines</h1>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                
+                <!-- 产品类别卡片 -->
+                <a href="#" class="product-category-link block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300" data-page="product-list" data-category="Cabinet Systems">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-2">Cabinet Systems</h2>
+                    <p class="text-gray-600 text-sm">High-density server racks, network cabinets, and open racks.</p>
+                </a>
+                
+                <a href="#" class="product-category-link block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300" data-page="product-list" data-category="Datacenter Infrastructure">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-2">Datacenter Infrastructure</h2>
+                    <p class="text-gray-600 text-sm">Environment monitoring, PDUs, and related infrastructure.</p>
+                </a>
+
+                <a href="#" class="product-category-link block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300" data-page="product-list" data-category="Cold Aisle Containment">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-2">Cold Aisle Containment</h2>
+                    <p class="text-gray-600 text-sm">Efficient hot/cold aisle containment solutions.</p>
+                </a>
+
+                <a href="#" class="product-category-link block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300" data-page="product-list" data-category="HD200 Micro Module">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-2">HD200 Micro Module</h2>
+                    <p class="text-gray-600 text-sm">All-in-one micro data center solutions.</p>
+                </a>
+
+                <a href="#" class="product-category-link block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300" data-page="product-list" data-category="Optical Communication">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-2">Optical Communication</h2>
+                    <p class="text-gray-600 text-sm">Fiber patch cords, adapters, and accessories.</p>
+                </a>
+
+                <a href="#" class="product-category-link block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300" data-page="product-list" data-category="Audio & Video">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-2">Audio & Video</h2>
+                    <p class="text-gray-600 text-sm">Professional audio and video connectivity solutions.</p>
+                </a>
+                
+                <a href="#" class="product-category-link block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300" data-page="product-list" data-category="AC/DC Power Distribution">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-2">AC/DC Power Distribution</h2>
+                    <p class="text-gray-600 text-sm">Reliable AC and DC power distribution units.</p>
+                </a>
+
+                <a href="#" class="product-category-link block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300" data-page="product-list" data-category="Audio Patch Panels (VDF)">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-2">Audio Patch Panels (VDF)</h2>
+                    <p class="text-gray-600 text-sm">Broadcast-level audio signal patching and management.</p>
+                </a>
+                
+                <a href="#" class="product-category-link block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300" data-page="product-list" data-category="Digital Patch Panels (DDF)">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-2">Digital Patch Panels (DDF)</h2>
+                    <p class="text-gray-600 text-sm">High-speed digital signal (E1/T1) management.</p>
+                </a>
+
+                <a href="#" class="product-category-link block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300" data-page="product-list" data-category="Network Patch Panels (NDF)">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-2">Network Patch Panels (NDF)</h2>
+                    <p class="text-gray-600 text-sm">Cat5e/Cat6/Cat6A network cabling management.</p>
+                </a>
+
+                <a href="#" class="product-category-link block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300" data-page="product-list" data-category="Fiber Patch Panels (ODF)">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-2">Fiber Patch Panels (ODF)</h2>
+                    <p class="text-gray-600 text-sm">High-density fiber splicing, patching, and management.</p>
+                </a>
+                
+                <a href="#" class="product-category-link block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300" data-page="product-list" data-category="Structured Cabling">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-2">Structured Cabling</h2>
+                    <p class="text-gray-600 text-sm">Complete structured cabling solutions.</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- 
+          页面B: 单个产品列表页 (例如 "机柜系统") 
+        -->
+        <div id="product-list" class="page-content">
+            <!-- 面包屑导航 -->
+            <nav class="text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
+                <ol class="list-none p-0 inline-flex">
+                    <li class="flex items-center">
+                        <a href="#" class="hover:text-blue-600 nav-link" data-page="products">All Products</a>
+                        <svg class="w-3 h-3 mx-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"/></svg>
+                    </li>
+                    <li id="breadcrumb-category" class="text-gray-600" aria-current="page">Cabinet Systems</li>
+                </ol>
+            </nav>
+            
+            <h1 class="text-3xl font-bold text-gray-900 mb-6" id="category-title">Cabinet Systems</h1>
+
+            <div class="flex flex-col md:flex-row -mx-4">
+                
+                <!-- 筛选器 (左侧) -->
+                <aside class="w-full md:w-1/4 px-4 mb-8 md:mb-0">
+                    <div id="filter-panel" class="bg-white p-6 rounded-lg shadow-sm sticky top-24">
+                        <!-- Filters will be dynamically injected here by JavaScript -->
+                    </div>
+                </aside>
+
+                <!-- 产品网格 (右侧) -->
+                <section class="w-full md:w-3/4 px-4">
+                    <!-- 排序方式 -->
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-gray-600">Showing 3 products</span>
+                        <select class="rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                            <option>Default Sorting</option>
+                            <option>Sort by Name</option>
+                            <option>Sort by Popularity</option>
+                        </select>
+                    </div>
+
+                    <!-- 产品卡片列表 -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        
+                        <!-- 产品卡片 1 -->
+                        <div class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200 hover:shadow-md transition-shadow">
+                            <a href="#" class="block nav-link" data-page="product-detail" data-product-id="HDCG-SR-42U" data-category="Cabinet Systems">
+                                <img src="https://placehold.co/600x600/E2E8F0/A0AEC0?text=[%E6%9C%BA%E6%9F%9C%E4%B8%BB%E5%9B%BE]" alt="[Image of Server Rack]" class="w-full h-56 object-cover">
+                                <div class="p-4">
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-1">HDCG-SR-42U</h3>
+                                    <p class="text-sm text-gray-600 mb-2">高密度42U服务器机柜，800x1200mm</p>
+                                    <span class="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded">65% 通风率</span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- 产品卡片 2 -->
+                        <div class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200 hover:shadow-md transition-shadow">
+                            <a href="#" class="block nav-link" data-page="product-detail" data-product-id="HDCG-NR-42U" data-category="Cabinet Systems">
+                                <img src="https://placehold.co/600x600/E2E8F0/A0AEC0?text=[%E7%BD%91%E7%BB%9C%E6%9C%BA%E6%9F%9C%E5%9B%BE%E7%89%87]" alt="[Image of Network Cabinet]" class="w-full h-56 object-cover">
+                                <div class="p-4">
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-1">HDCG-NR-42U</h3>
+                                    <p class="text-sm text-gray-600 mb-2">标准42U网络机柜，600x1000mm</p>
+                                    <span class="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded">玻璃前门</span>
+                                </div>
+                            </a>
+                        </div>
+                        
+                        <!-- 产品卡片 3 -->
+                        <div class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200 hover:shadow-md transition-shadow">
+                            <a href="#" class="block nav-link" data-page="product-detail" data-product-id="HDCG-OR-24U" data-category="Cabinet Systems">
+                                <img src="https://placehold.co/600x600/E2E8F0/A0AEC0?text=[%E5%BC%80%E6%94%BE%E5%BC%8F%E6%9C%BA%E6%9E%B6]" alt="" class="w-full h-56 object-cover">
+                                <div class="p-4">
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-1">HDCG-OR-24U</h3>
+                                    <p class="text-sm text-gray-600 mb-2">24U 2立柱开放式机架</p>
+                                    <span class="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded">易于布线</span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- 更多产品占位符 -->
+
+                    </div>
+
+                    <!-- 分页 -->
+                    <div class="mt-8 flex justify-center">
+                        <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                            <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                <span class="sr-only">Previous</span>
+                                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                            </a>
+                            <a href="#" aria-current="page" class="z-10 bg-blue-50 border-blue-500 text-blue-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium"> 1 </a>
+                            <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium"> 2 </a>
+                            <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                <span class="sr-only">Next</span>
+                                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
+                            </a>
+                        </nav>
+                    </div>
+
+                </section>
+            </div>
+        </div>
+
+        <!-- 
+          页面C: 产品详情页 (PDP)
+          (根据您的详细需求构建)
+        -->
+        <div id="product-detail" class="page-content">
+            <!-- 面包屑导航 -->
+            <nav class="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
+                <ol class="list-none p-0 inline-flex">
+                    <li class="flex items-center">
+                        <a href="#" class="hover:text-blue-600 nav-link" data-page="products">All Products</a>
+                        <svg class="w-3 h-3 mx-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"/></svg>
+                    </li>
+                    <li class="flex items-center">
+                        <a href="#" id="breadcrumb-pdp-category" class="hover:text-blue-600 nav-link product-category-link" data-page="product-list" data-category="Cabinet Systems">Cabinet Systems</a>
+                        <svg class="w-3 h-3 mx-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"/></svg>
+                    </li>
+                    <li id="breadcrumb-pdp-product" class="text-gray-600" aria-current="page">HDCG-SR-42U</li>
+                </ol>
+            </nav>
+
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <!-- 1. 头部区域 -->
+                <div class="p-6 md:p-10">
+                    <div class="flex flex-col lg:flex-row -mx-4">
+                        
+                        <!-- 左侧: 图片库 -->
+                        <div class="w-full lg:w-1/2 px-4">
+                            <!-- 主图片 -->
+                            <div class="border rounded-lg bg-gray-100 mb-4">
+                                <img id="main-product-image" src="https://placehold.co/800x800/E2E8F0/A0AEC0?text=[%E4%BA%A7%E5%93%81%E4%B8%BB%E5%9B%BE]" alt="[Main image of product HDCG-SR-42U]" class="w-full h-auto object-cover rounded-lg">
+                            </div>
+                            <!-- 缩略图库 -->
+                            <div class="flex space-x-2 overflow-x-auto">
+                                <button class="gallery-thumb flex-shrink-0 w-20 h-20 border-2 border-blue-600 rounded-md p-1 active" data-src="https://placehold.co/800x800/E2E8F0/A0AEC0?text=[%E4%BA%A7%E5%93%81%E4%B8%BB%E5%9B%BE]">
+                                    <img src="https://placehold.co/200x200/E2E8F0/A0AEC0?text=[Main]" alt="[Thumbnail 1]" class="w-full h-full object-cover rounded-sm">
+                                </button>
+                                <button class="gallery-thumb flex-shrink-0 w-20 h-20 border-2 border-gray-300 rounded-md p-1" data-src="https://placehold.co/800x800/E2E8F0/A0AEC0?text=[%E5%A4%9A%E8%A7%92%E5%BA%A6%201]">
+                                    <img src="https://placehold.co/200x200/E2E8F0/A0AEC0?text=[Angle 1]" alt="[Thumbnail 2]" class="w-full h-full object-cover rounded-sm">
+                                </button>
+                                <button class="gallery-thumb flex-shrink-0 w-20 h-20 border-2 border-gray-300 rounded-md p-1" data-src="https://placehold.co/800x800/E2E8F0/A0AEC0?text=[%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF]">
+                                    <img src="https://placehold.co/200x200/E2E8F0/A0AEC0?text=[Scene]" alt="[Thumbnail 3]" class="w-full h-full object-cover rounded-sm">
+                                </button>
+                                <!-- 3D 视图缩略图 -->
+                                <button class="gallery-thumb flex-shrink-0 w-20 h-20 border-2 border-gray-300 rounded-md p-1 flex items-center justify-center bg-gray-50 text-gray-500" data-src="https://placehold.co/800x800/E2E8F0/A0AEC0?text=[3D Model]">
+                                    <i class="icon iconfont icon-a-3Dduowei" style="font-size: 40px;"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 右侧: 产品信息与CTA -->
+                        <div class="w-full lg:w-1/2 px-4 mt-6 lg:mt-0">
+                            <h1 class="text-3xl font-bold text-gray-900 mb-2">HDCG-SR-42U</h1>
+                            <p class="text-lg text-gray-600 mb-4">High-density 42U server rack with 65% ventilation for maximum airflow</p>
+                            
+                            <div class="border-t border-b border-gray-200 py-4 mb-6">
+                                <h3 class="text-md font-semibold text-gray-800 mb-3">Key Features</h3>
+                                <ul class="list-disc list-inside space-y-2 text-gray-600">
+                                    <li><span class="font-medium">65% High Ventilation:</span> Honeycomb mesh doors ensure optimal airflow.</li>
+                                    <li><span class="font-medium">1500KG Static Load:</span> Heavy-duty frame for mission-critical equipment.</li>
+                                    <li><span class="font-medium">Tool-less Installation:</span> Vertical cable managers and PDUs for rapid deployment.</li>
+                                    <li><span class="font-medium">Flexible Cable Entry:</span> Multiple cable entries on top and bottom.</li>
+                                </ul>
+                            </div>
+
+                            <!-- 行动号召 (CTA) 按钮 -->
+                            <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                                <a href="#" class="w-full sm:w-auto flex-1 inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
+                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                                    Request a Quote
+                                </a>
+                                <a href="#documentation" class="w-full sm:w-auto flex-1 inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50">
+                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                                    Download Datasheet
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. 详情标签页 (概述, 规格, 文档, 订购) -->
+                <div class="border-t border-gray-200">
+                    <!-- 标签页导航 -->
+                    <div class="bg-gray-50">
+                        <nav class="flex space-x-1 sm:space-x-4 px-4 sm:px-8 -mb-px" aria-label="Tabs">
+                            <button class="tab-link active w-full sm:w-auto text-blue-600 border-blue-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" data-tab="overview">
+                                Overview
+                            </button>
+                            <button class="tab-link w-full sm:w-auto text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" data-tab="specs">
+                                Specifications
+                            </button>
+                            <button class="tab-link w-full sm:w-auto text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" data-tab="documentation">
+                                Documents & Drawings
+                            </button>
+                            <button class="tab-link w-full sm:w-auto text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" data-tab="ordering">
+                                Ordering Info
+                            </button>
+                        </nav>
+                    </div>
+
+                    <!-- 标签页内容 -->
+                    <div class="p-6 md:p-10">
+                        
+                        <!-- Tab 1: 概述 (特性与优势) -->
+                        <div id="tab-overview" class="tab-content active">
+                            <h2 class="text-2xl font-semibold text-gray-900 mb-6">Features & Benefits</h2>
+                            
+                            <!-- 特性列表 -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                                <div class="flex">
+                                    <svg class="w-6 h-6 text-blue-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Faster Deployment</h4>
+                                        <p class="text-gray-600">Tool-less PDU and vertical cable manager installation.</p>
+                                    </div>
+                                </div>
+                                <div class="flex">
+                                    <svg class="w-6 h-6 text-blue-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Superior Thermal Management</h4>
+                                        <p class="text-gray-600">65% ventilation doors, compatible with hot/cold aisle.</p>
+                                    </div>
+                                </div>
+                                <div class="flex">
+                                    <svg class="w-6 h-6 text-blue-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Robust & Stable</h4>
+                                        <p class="text-gray-600">Heavy-duty SPCC steel frame with 1500KG static load rating.</p>
+                                    </div>
+                                </div>
+                                <div class="flex">
+                                    <svg class="w-6 h-6 text-blue-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Easy Cable Management</h4>
+                                        <p class="text-gray-600">Adjustable openings on top/bottom and high-capacity vertical troughs.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 应用场景 -->
+                            <h2 class="text-2xl font-semibold text-gray-900 mt-10 mb-6">Ideal Applications</h2>
+                            <div class="flex flex-col md:flex-row items-center bg-gray-50 rounded-lg p-6">
+                                <img src="https://placehold.co/400x300/E2E8F0/A0AEC0?text=[Data Center Scene]" alt="[Image of data center application]" class="w-full md:w-1/3 rounded-md shadow-md object-cover">
+                                <div class="md:ml-6 mt-4 md:mt-0">
+                                    <h4 class="text-lg font-medium text-gray-800">High-Density Enterprise Datacenters</h4>
+                                    <p class="text-gray-600 mt-2">Designed for environments with blade servers, switches, and storage. Superior airflow and load capacity ensure 24/7 stability.</p>
+                                    <ul class="list-disc list-inside space-y-1 text-gray-600 mt-3 text-sm">
+                                        <li>Network Aggregation</li>
+                                        <li>Server Clusters</li>
+                                        <li>Co-location Centers</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 2: 技术规格 -->
+                        <div id="tab-specs" class="tab-content">
+                            <h2 class="text-2xl font-semibold text-gray-900 mb-6">Technical Specifications</h2>
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full border border-gray-200 divide-y divide-gray-200">
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                        <tr>
+                                            <td class="px-6 py-4 w-1/3 font-medium text-gray-700 bg-gray-50">Model</td>
+                                            <td class="px-6 py-4 w-2/3 text-gray-800">HDCG-SR-42U</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 font-medium text-gray-700 bg-gray-50">Height</td>
+                                            <td class="px-6 py-4 text-gray-800">42U (2000mm)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 font-medium text-gray-700 bg-gray-50">Width</td>
+                                            <td class="px-6 py-4 text-gray-800">800mm</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 font-medium text-gray-700 bg-gray-50">Depth</td>
+                                            <td class="px-6 py-4 text-gray-800">1200mm</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 font-medium text-gray-700 bg-gray-50">Static Load</td>
+                                            <td class="px-6 py-4 text-gray-800">1500 KG</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 font-medium text-gray-700 bg-gray-50">Material</td>
+                                            <td class="px-6 py-4 text-gray-800">High-quality SPCC cold-rolled steel</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 font-medium text-gray-700 bg-gray-50">Frame Thickness</td>
+                                            <td class="px-6 py-4 text-gray-800">2.0mm</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 font-medium text-gray-700 bg-gray-50">Mounting Rail Thickness</td>
+                                            <td class="px-6 py-4 text-gray-800">1.5mm (Square Hole)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 font-medium text-gray-700 bg-gray-50">Doors</td>
+                                            <td class="px-6 py-4 text-gray-800">Front Single Mesh, Rear Split Mesh (65% Ventilation)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 font-medium text-gray-700 bg-gray-50">Color</td>
+                                            <td class="px-6 py-4 text-gray-800">Black (RAL9005)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 font-medium text-gray-700 bg-gray-50">Standards</td>
+                                            <td class="px-6 py-4 text-gray-800">ANSI/EIA RS-310-D, IEC297-2, DIN41494; PART1, DIN41494; PART7, ETSI</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Tab 3: 文档与图纸 -->
+                        <div id="tab-documentation" class="tab-content">
+                            <h2 class="text-2xl font-semibold text-gray-900 mb-6">Documentation Center</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- 可下载资源 -->
+                                <div class="space-y-4">
+                                    <h3 class="text-lg font-medium text-gray-800">Downloadable Resources</h3>
+                                    
+                                    <a href="[占位符_规格书.pdf]" download class="flex items-center p-4 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 hover:border-gray-300 transition">
+                                        <svg class="w-8 h-8 text-red-600 mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                                        <div>
+                                            <span class="font-medium text-gray-800">Product Datasheet (PDF)</span>
+                                            <p class="text-sm text-gray-600">HDCG-SR-42U_Datasheet_EN.pdf (2.5 MB)</p>
+                                        </div>
+                                    </a>
+                                    
+                                    <a href="[占位符_安装手册.pdf]" download class="flex items-center p-4 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 hover:border-gray-300 transition">
+                                        <svg class="w-8 h-8 text-red-600 mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                                        <div>
+                                            <span class="font-medium text-gray-800">Installation Manual (PDF)</span>
+                                            <p class="text-sm text-gray-600">Installation_Manual_SR_Series.pdf (5.1 MB)</p>
+                                        </div>
+                                    </a>
+
+                                    <a href="[占位符_质保信息.pdf]" download class="flex items-center p-4 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 hover:border-gray-300 transition">
+                                        <svg class="w-8 h-8 text-red-600 mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                                        <div>
+                                            <span class="font-medium text-gray-800">Warranty Information (PDF)</span>
+                                            <p class="text-sm text-gray-600">HDCG_Warranty_Policy.pdf (0.8 MB)</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                
+                                <!-- 机械图纸 -->
+                                <div>
+                                    <h3 class="text-lg font-medium text-gray-800 mb-4">Mechanical Drawings</h3>
+                                    <div class="border rounded-lg p-4">
+                                        <img src="https://placehold.co/600x400/E2E8F0/A0AEC0?text=[Mechanical Drawing Preview]" alt="[Preview of mechanical drawing]" class="w-full rounded-md shadow-sm object-cover">
+                                        <div class="flex space-x-3 mt-4">
+                                            <a href="[占位符_图纸.pdf]" download class="inline-flex items-center justify-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50">
+                                                Download PDF
+                                            </a>
+                                            <a href="[占位符_图纸.dwg]" download class="inline-flex items-center justify-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50">
+                                                Download CAD (.dwg)
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 4: 订购信息 -->
+                        <div id="tab-ordering" class="tab-content">
+                            <h2 class="text-2xl font-semibold text-gray-900 mb-6">Ordering Matrix (SKU)</h2>
+                            <div class="overflow-x-auto border border-gray-200 rounded-lg">
+                                <table class="min-w-full divide-y divide-gray-200">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">SKU / Part Number</th>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Height (U)</th>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Width (mm)</th>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Depth (mm)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                        <tr class="hover:bg-gray-50">
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">HDCG-SR-42U-8012</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">High-Density Server Rack, Black</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">42U</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">800</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">1200</td>
+                                        </tr>
+                                        <tr class="hover:bg-gray-50">
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">HDCG-SR-42U-8010</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">High-Density Server Rack, Black</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">42U</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">800</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">1000</td>
+                                        </tr>
+                                        <tr class="hover:bg-gray-50">
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">HDCG-SR-42U-6012</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">High-Density Server Rack, Black</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">42U</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">600</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">1200</td>
+                                        </tr>
+                                        <tr class="hover:bg-gray-50">
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">HDCG-SR-45U-8012</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">High-Density Server Rack, Black</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">45U</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">800</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">1200</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <!-- 相关配件 -->
+                            <h2 class="text-2xl font-semibold text-gray-900 mt-10 mb-6">Related Products & Accessories</h2>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                                
+                                <!-- 配件卡片 1 -->
+                                <div class="bg-gray-50 rounded-lg shadow-sm overflow-hidden border border-gray-200 hover:shadow-md transition-shadow">
+                                    <a href="#" class="block">
+                                        <img src="https://placehold.co/400x300/E2E8F0/A0AEC0?text=[PDU]" alt="" class="w-full h-32 object-cover">
+                                        <div class="p-4">
+                                            <h3 class="text-md font-semibold text-gray-900 mb-1">Vertical PDU</h3>
+                                            <p class="text-sm text-gray-600">0U, 32A, 24x C13</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- 配件卡片 2 -->
+                                <div class="bg-gray-50 rounded-lg shadow-sm overflow-hidden border border-gray-200 hover:shadow-md transition-shadow">
+                                    <a href="#" class="block">
+                                        <img src="https://placehold.co/400x300/E2E8F0/A0AEC0?text=[Cable Manager]" alt="" class="w-full h-32 object-cover">
+                                        <div class="p-4">
+                                            <h3 class="text-md font-semibold text-gray-900 mb-1">1U Cable Manager</h3>
+                                            <p class="text-sm text-gray-600">With cover, metal rings</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- 配件卡片 3 -->
+                                <div class="bg-gray-50 rounded-lg shadow-sm overflow-hidden border border-gray-200 hover:shadow-md transition-shadow">
+                                    <a href="#" class="block">
+                                        <img src="https://placehold.co/400x300/E2E8F0/A0AEC0?text=[Shelf]" alt="[Image of a Shelf]" class="w-full h-32 object-cover">
+                                        <div class="p-4">
+                                            <h3 class="text-md font-semibold text-gray-900 mb-1">Fixed Shelf</h3>
+                                            <p class="text-sm text-gray-600">800mm Depth, 50KG Load</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- 配件卡片 4 -->
+                                <div class="bg-gray-50 rounded-lg shadow-sm overflow-hidden border border-gray-200 hover:shadow-md transition-shadow">
+                                    <a href="#" class="block">
+                                        <img src="https://placehold.co/400x300/E2E8F0/A0AEC0?text=[Blank Panel]" alt="[Image of a Blank Panel]" class="w-full h-32 object-cover">
+                                        <div class="p-4">
+                                            <h3 class="text-md font-semibold text-gray-900 mb-1">1U Blank Panel</h3>
+                                            <p class="text-sm text-gray-600">Tool-less mounting</p>
+                                        </div>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+        <!-- 
+          页面D: 关于我们 (About) 
+        -->
+        <div id="about" class="page-content">
+            <h1 class="text-3xl font-bold text-gray-900 mb-6">About Huadian Chenguang (HDCG)</h1>
+            <p class="text-lg text-gray-600">Coming soon: Our company history, mission, manufacturing capabilities, and quality certifications (ISO 9001, CE, RoHS).</p>
+            <!-- 此处可添加更多关于公司的内容 -->
+        </div>
+
+        <!-- 
+          页面E: 联系我们 (Contact) 
+        -->
+        <div id="contact" class="page-content">
+            <div class="bg-white p-8 rounded-lg shadow-lg max-w-4xl mx-auto">
+                <h1 class="text-3xl font-bold text-gray-900 mb-6">Contact Us for a Quote</h1>
+                <p class="text-lg text-gray-600 mb-8">Please fill out the form below and our sales representative will contact you within 24 hours. You can also reach us directly via email or phone.</p>
+                
+                <div class="flex flex-col md:flex-row -mx-6">
+                    <!-- 联系表单 -->
+                    <form class="w-full md:w-2/3 px-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="first-name" class="block text-sm font-medium text-gray-700">First Name</label>
+                                <input type="text" id="first-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label for="last-name" class="block text-sm font-medium text-gray-700">Last Name</label>
+                                <input type="text" id="last-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email Address *</label>
+                            <input type="email" id="email" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <div class="mt-6">
+                            <label for="company" class="block text-sm font-medium text-gray-700">Company Name</label>
+                            <input type="text" id="company" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <div class="mt-6">
+                            <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                            <input type="tel" id="phone" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <div class="mt-6">
+                            <label for="message" class="block text-sm font-medium text-gray-700">Your Inquiry Details *</label>
+                            <textarea id="message" rows="5" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Please tell us about the product models, quantities, and project requirements..."></textarea>
+                        </div>
+                        <div class="mt-8">
+                            <button type="submit" class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
+                                Send Inquiry
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <!-- 联系信息 -->
+                    <div class="w-full md:w-1/3 px-6 mt-8 md:mt-0 border-t md:border-t-0 md:border-l border-gray-200 pt-8 md:pt-0">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Direct Contact</h3>
+                        <div class="space-y-4 text-gray-600">
+                            <div>
+                                <h4 class="font-medium text-gray-800">Global Sales</h4>
+                                <a href="mailto:sales@hdcg.com" class="text-blue-600 hover:underline">sales@hdcg.com</a>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">Technical Support</h4>
+                                <a href="mailto:support@hdcg.com" class="text-blue-600 hover:underline">support@hdcg.com</a>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">Phone</h4>
+                                <p>+86-10-1234-5678</p>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">Address</h4>
+                                <p>Haidian District, Beijing<br>China, 100086</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 
+          页面F: 下载中心 (Download) - 新增页面
+        -->
+        <div id="download" class="page-content">
+            <h1 class="text-3xl font-bold text-gray-900 mb-8">Download Center</h1>
+            <p class="text-lg text-gray-600 mb-6">Find technical datasheets, white papers, installation manuals, and CAD drawings for our products.</p>
+            
+            <!-- Tab Navigation for Downloads -->
+            <div class="border-b border-gray-200">
+                <nav class="flex space-x-1 sm:space-x-4 -mb-px" aria-label="Tabs">
+                    <button class="download-tab-link active w-auto text-blue-600 border-blue-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" data-tab="white-papers">
+                        White Papers
+                    </button>
+                    <button class="download-tab-link w-auto text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" data-tab="drawings">
+                        CAD Drawings
+                    </button>
+                    <button class="download-tab-link w-auto text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" data-tab="manuals">
+                        Manuals
+                    </button>
+                </nav>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="mt-8">
+                <!-- White Papers Content -->
+                <div id="tab-white-papers" class="download-tab-content active">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">White Papers</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Download Item 1 -->
+                        <a href="[placeholder_white_paper_1.pdf]" download class="flex items-center p-4 bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition">
+                            <svg class="w-8 h-8 text-red-600 mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            <div>
+                                <span class="font-medium text-gray-800">White Paper: Optimizing Airflow in High-Density Racks</span>
+                                <p class="text-sm text-gray-600">PDF (1.8 MB)</p>
+                            </div>
+                        </a>
+                        <!-- Download Item 2 -->
+                        <a href="[placeholder_white_paper_2.pdf]" download class="flex items-center p-4 bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition">
+                            <svg class="w-8 h-8 text-red-600 mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            <div>
+                                <span class="font-medium text-gray-800">Guide: Principles of Cold Aisle Containment</span>
+                                <p class="text-sm text-gray-600">PDF (3.2 MB)</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- Drawings Content -->
+                <div id="tab-drawings" class="download-tab-content">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">CAD Drawings</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Drawing Item 1 -->
+                        <a href="[placeholder_drawing_1.dwg]" download class="flex items-center p-4 bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition">
+                            <svg class="w-8 h-8 text-blue-600 mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            <div>
+                                <span class="font-medium text-gray-800">HDCG-SR-42U (800x1200) CAD Drawing</span>
+                                <p class="text-sm text-gray-600">DWG (4.5 MB)</p>
+                            </div>
+                        </a>
+                        <!-- Drawing Item 2 -->
+                        <a href="[placeholder_drawing_2.dwg]" download class="flex items-center p-4 bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition">
+                            <svg class="w-8 h-8 text-blue-600 mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            <div>
+                                <span class="font-medium text-gray-800">HDCG-CAC-Series Drawing</span>
+                                <p class="text-sm text-gray-600">DWG (8.1 MB)</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- Manuals Content -->
+                <div id="tab-manuals" class="download-tab-content">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">Installation Manuals</h2>
+                    <a href="[placeholder_manual_1.pdf]" download class="flex items-center p-4 bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition">
+                        <svg class="w-8 h-8 text-red-600 mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        <div>
+                            <span class="font-medium text-gray-800">Installation Manual: SR-Series Cabinets</span>
+                            <p class="text-sm text-gray-600">PDF (5.1 MB)</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- 3. 页脚 -->
+    <footer class="bg-gray-800 text-gray-300 mt-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                
+                <!-- Logo 和描述 -->
+                <div class="col-span-2 lg:col-span-2">
+                    <h2 class="text-2xl font-bold text-white mb-2">HDCG</h2>
+                    <p class="text-gray-400 max-w-md">Huadian Chenguang (HDCG) is a leading provider of data center infrastructure and structured cabling solutions, dedicated to high-quality cabinets, containment, and connectivity products for global customers.</p>
+                </div>
+
+                <!-- 快速链接 -->
+                <div>
+                    <h4 class="text-sm font-semibold text-gray-100 uppercase tracking-wider mb-3">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white nav-link" data-page="products">Products</a></li>
+                        <li><a href="#" class="hover:text-white nav-link" data-page="about">About Us</a></li>
+                        <li><a href="#" class="hover:text-white nav-link" data-page="download">Download</a></li>
+                        <li><a href="#" class="hover:text-white nav-link" data-page="contact">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- 产品类别 -->
+                <div>
+                    <h4 class="text-sm font-semibold text-gray-100 uppercase tracking-wider mb-3">Products</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white nav-link product-category-link" data-page="product-list" data-category="Cabinet Systems">Cabinet Systems</a></li>
+                        <li><a href="#" class="hover:text-white nav-link product-category-link" data-page="product-list" data-category="Cold Aisle Containment">Cold Aisle</a></li>
+                        <li><a href="#" class="hover:text-white nav-link product-category-link" data-page="product-list" data-category="HD200 Micro Module">Micro Module</a></li>
+                        <li><a href="#" class="hover:text-white nav-link product-category-link" data-page="product-list" data-category="Structured Cabling">Structured Cabling</a></li>
+                    </ul>
+                </div>
+
+                <!-- 联系方式 -->
+                <div>
+                    <h4 class="text-sm font-semibold text-gray-100 uppercase tracking-wider mb-3">Contact</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>+86-10-1234-5678</li>
+                        <li>sales@hdcg.com</li>
+                        <li>Haidian, Beijing, China</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- 底部版权 -->
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500">
+                &copy; 2024 Huadian Chenguang (HDCG) All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const pages = document.querySelectorAll('.page-content');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuOpenIcon = document.getElementById('menu-open-icon');
+            const menuCloseIcon = document.getElementById('menu-close-icon');
+
+            // --- 页面导航逻辑 ---
+            const defaultPage = 'products'; // 默认加载产品总览页
+
+            function showPage(pageId) {
+                // 隐藏所有页面
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // 显示目标页面
+                const targetPage = document.getElementById(pageId);
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                } else {
+                    // 如果页面ID不存在, 显示默认页
+                    document.getElementById(defaultPage).classList.add('active');
+                }
+                
+                // 滚动到页面顶部
+                window.scrollTo(0, 0);
+
+                // 关闭移动菜单
+                mobileMenu.classList.add('hidden');
+                menuOpenIcon.classList.remove('hidden');
+                menuCloseIcon.classList.add('hidden');
+            }
+
+            // 为所有导航链接添加点击事件
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const pageId = link.getAttribute('data-page');
+                    
+                    // 特殊处理: 产品列表页
+                    if (pageId === 'product-list') {
+                        const category = link.getAttribute('data-category');
+                        updateProductListPage(category);
+                    }
+                    
+                    // 特殊处理: 产品详情页
+                    if (pageId === 'product-detail') {
+                        const productId = link.getAttribute('data-product-id');
+                        const category = link.getAttribute('data-category');
+                        updateProductDetailPage(productId, category);
+                    }
+
+                    showPage(pageId);
+                });
+            });
+
+            // --- 移动菜单 ---
+            mobileMenuButton.addEventListener('click', () => {
+                const isOpen = mobileMenu.classList.toggle('hidden');
+                menuOpenIcon.classList.toggle('hidden', !isOpen);
+                menuCloseIcon.classList.toggle('hidden', isOpen);
+            });
+
+
+            // --- 产品列表页逻辑 ---
+            const categoryTitle = document.getElementById('category-title');
+            const breadcrumbCategory = document.getElementById('breadcrumb-category');
+            const filterPanel = document.getElementById('filter-panel'); // 获取筛选器面板
+
+            // 定义不同类别的筛选器
+            const categoryFilters = {
+                "Cabinet Systems": [
+                    { title: "Cabinet Height (U)", options: ["48U", "45U", "42U", "24U"] },
+                    { title: "Width (mm)", options: ["800mm", "600mm"] },
+                    { title: "Depth (mm)", options: ["1200mm", "1000mm"] }
+                ],
+                "Cold Aisle Containment": [
+                    { title: "Aisle Type", options: ["Hot Aisle", "Cold Aisle"] },
+                    { title: "Roof Type", options: ["Static Roof", "Auto-Opening Roof"] },
+                    { title: "Door Type", options: ["Single Sliding Door", "Double Sliding Door"] }
+                ],
+                "Structured Cabling": [
+                    { title: "Category", options: ["Cat.6A", "Cat.6", "Cat.5e"] },
+                    { title: "Product Type", options: ["Patch Panel", "Keystone Jack", "Patch Cord"] }
+                ],
+                "Optical Communication": [
+                    { title: "Fiber Type", options: ["Single Mode (OS2)", "Multimode (OM3)", "Multimode (OM4)"] },
+                    { title: "Connector", options: ["LC", "SC", "MPO/MTP"] }
+                ]
+                // ... 可为其他类别添加更多筛选器
+            };
+            
+            function updateProductListPage(category) {
+                if (category) {
+                    // 1. 更新标题和面包屑
+                    categoryTitle.textContent = category;
+                    breadcrumbCategory.textContent = category;
+                    
+                    // 2. 更新详情页的面包屑导航链接
+                    const pdpCategoryLink = document.getElementById('breadcrumb-pdp-category');
+                    pdpCategoryLink.textContent = category;
+                    pdpCategoryLink.setAttribute('data-category', category);
+
+                    // 3. 动态生成筛选器
+                    filterPanel.innerHTML = ''; // 清空现有筛选器
+                    const filters = categoryFilters[category];
+                    
+                    let filterHtml = '<h3 class="text-lg font-semibold mb-4 border-b pb-2">Filters</h3>';
+                    
+                    if (filters && filters.length > 0) {
+                        filters.forEach((filterGroup, index) => {
+                            filterHtml += `<div class="${index > 0 ? 'mt-6' : ''}">
+                                <h4 class="font-medium mb-2">${filterGroup.title}</h4>
+                                <div class="space-y-1">`;
+                            
+                            filterGroup.options.forEach(option => {
+                                filterHtml += `<label class="flex items-center text-gray-600">
+                                    <input type="checkbox" class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
+                                    <span class="ml-2">${option}</span>
+                                </label>`;
+                            });
+
+                            filterHtml += `</div></div>`;
+                        });
+                        
+                        filterHtml += `<button class="w-full mt-6 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors">
+                            Apply Filters
+                        </button>`;
+                    } else {
+                        filterHtml += '<p class="text-gray-600 text-sm">No specific filters for this category.</p>';
+                    }
+                    
+                    filterPanel.innerHTML = filterHtml;
+
+
+                    console.log(`Loading category: ${category}`);
+                    // 动态加载产品卡片...
+                }
+            }
+            
+            // --- 产品详情页 (PDP) 逻辑 ---
+            
+            // 1. 面包屑导航更新
+            const breadcrumbPdpCategory = document.getElementById('breadcrumb-pdp-category');
+            const breadcrumbPdpProduct = document.getElementById('breadcrumb-pdp-product');
+
+            function updateProductDetailPage(productId, category) {
+                 if (productId && category) {
+                    // 模拟根据产品ID和分类更新详情
+                    // 在实际应用中, 这里会触发 API 请求获取产品数据
+                    breadcrumbPdpCategory.textContent = category;
+                    breadcrumbPdpCategory.setAttribute('data-category', category);
+                    breadcrumbPdpProduct.textContent = productId;
+
+                    console.log(`正在加载产品: ${productId} (分类: ${category})`);
+                    // 动态更新产品图片、标题、规格等...
+                    
+                    // 重置标签页到"概述"
+                    switchTab('overview');
+                 }
+            }
+
+
+            // 2. 图片库
+            const mainImage = document.getElementById('main-product-image');
+            const galleryThumbs = document.querySelectorAll('.gallery-thumb');
+
+            galleryThumbs.forEach(thumb => {
+                thumb.addEventListener('click', () => {
+                    // 移除所有缩略图的 active 状态
+                    galleryThumbs.forEach(t => t.classList.remove('active', 'border-blue-600'));
+                    
+                    // 为当前点击的缩略图添加 active 状态
+                    thumb.classList.add('active', 'border-blue-600');
+                    
+                    // 更新主图片
+                    const newSrc = thumb.getAttribute('data-src');
+                    mainImage.setAttribute('src', newSrc);
+                });
+            });
+
+            // 3. 详情标签页
+            const tabLinks = document.querySelectorAll('.tab-link');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            function switchTab(tabId) {
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+                tabLinks.forEach(link => {
+                    link.classList.remove('active', 'text-blue-600', 'border-blue-600');
+                    link.classList.add('text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
+                });
+
+                const activeTab = document.getElementById(`tab-${tabId}`);
+                const activeLink = document.querySelector(`.tab-link[data-tab="${tabId}"]`);
+
+                if (activeTab && activeLink) {
+                    activeTab.classList.add('active');
+                    activeLink.classList.add('active', 'text-blue-600', 'border-blue-600');
+                    activeLink.classList.remove('text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
+                }
+            }
+
+            tabLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const tabId = link.getAttribute('data-tab');
+                    switchTab(tabId);
+                });
+            });
+
+            // --- 新增: 下载页面的Tab逻辑 ---
+            const downloadTabLinks = document.querySelectorAll('.download-tab-link');
+            const downloadTabContents = document.querySelectorAll('.download-tab-content');
+
+            function switchDownloadTab(tabId) {
+                // 隐藏所有下载内容
+                downloadTabContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+                // 重置所有下载Tab链接样式
+                downloadTabLinks.forEach(link => {
+                    link.classList.remove('active', 'text-blue-600', 'border-blue-600');
+                    link.classList.add('text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
+                });
+
+                // 激活点击的Tab和内容
+                const activeTab = document.getElementById(`tab-${tabId}`);
+                const activeLink = document.querySelector(`.download-tab-link[data-tab="${tabId}"]`);
+
+                if (activeTab && activeLink) {
+                    activeTab.classList.add('active');
+                    activeLink.classList.add('active', 'text-blue-600', 'border-blue-600');
+                    activeLink.classList.remove('text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
+                }
+            }
+
+            downloadTabLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const tabId = link.getAttribute('data-tab');
+                    // 修复: 移除了这里错误的 'As-is:' 标签
+                    switchDownloadTab(tabId);
+                });
+            });
+
+            // 初始加载默认页面
+            showPage(defaultPage);
+
+        });
+    </script>
+</body>
+</html>
+
